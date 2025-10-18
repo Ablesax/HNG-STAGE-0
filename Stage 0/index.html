@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Profile Card – Stage 0</title>
+
+  <!-- to link my css with the html -->
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <!-- this is the button used to toggle between light theme and dark theme -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    Light
+  </button>
+
+  <!-- this is the article container for the profile picture -->
+  <article data-testid="test-profile-card">
+    <figure>
+      <img
+        src="./19.jpg"
+        alt="Profile picture of Shalom Oso"
+        data-testid="test-user-avatar"
+        id="avatar"
+      />
+      <div class="upload-wrapper">
+        <label for="avatarInput" class="upload-btn">Change Avatar</label>
+        <input type="file" id="avatarInput" accept="image/*" />
+      </div>
+    </figure>
+ 
+    <!-- this is the biodata part -->
+    <div class="content">
+      <header>
+        <h2 data-testid="test-user-name">Shalom Oso</h2>
+        <p data-testid="test-user-bio">
+          Computer Science student passionate about frontend development, data science,
+          and building user-friendly AI tools.
+        </p>
+      </header>
+
+      <p class="time" data-testid="test-user-time"></p>
+
+      <!-- these are my available social media handles -->
+      <nav aria-label="Social Media Links">
+        <ul data-testid="test-user-social-links">
+          <li>
+            <a href="https://x.com/shalom_ablesax?s=21" target="_blank" rel="noopener noreferrer"
+              data-testid="test-user-social-twitter">Twitter</a>
+          </li>
+          <li>
+            <a href="https://github.com/Ablesax" target="_blank" rel="noopener noreferrer"
+              data-testid="test-user-social-github">GitHub</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/ososhalom?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer"
+              data-testid="test-user-social-linkedin">LinkedIn</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- some of my hobbies are listed below in an unordered list -->
+      <section aria-label="Hobbies">
+        <h3>Hobbies</h3>
+        <ul data-testid="test-user-hobbies">
+          <li>Playing the saxophone </li>
+          <li>Building interactive web apps </li>
+          <li>Researching AI and ML </li>
+        </ul>
+      </section>
+
+      <!-- some of my dislikes includes; -->
+      <section aria-label="Dislikes">
+        <h3>Dislikes</h3>
+        <ul data-testid="test-user-dislikes">
+          <li>Unoptimized code </li>
+          <li>Missed deadlines </li>
+          <li>Cluttered UI </li>
+        </ul>
+      </section>
+    </div>
+  </article>
+
+  <!-- linking the javascript code with my html -->
+  <script src="./index.js"></script>
+</body>
+</html>
