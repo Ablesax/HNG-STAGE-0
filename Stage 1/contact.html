@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me – Stage 1</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+    <section class="topmostotside">
+  <header class="page-header">
+    <h1>Contact Us</h1>
+    <nav>
+      <a href="./index.html">Profile</a>
+      <a href="./about.html">About Me</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="contactForm" novalidate aria-labelledby="contactHeading">
+      <h2 id="contactHeading">We’d love to hear from you!</h2>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" data-testid="test-contact-name" required aria-describedby="error-name" />
+        <small id="error-name" class="error" data-testid="test-contact-error-name"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" data-testid="test-contact-email" required aria-describedby="error-email" />
+        <small id="error-email" class="error" data-testid="test-contact-error-email"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" data-testid="test-contact-subject" required aria-describedby="error-subject" />
+        <small id="error-subject" class="error" data-testid="test-contact-error-subject"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" data-testid="test-contact-message" required aria-describedby="error-message"></textarea>
+        <small id="error-message" class="error" data-testid="test-contact-error-message"></small>
+      </div>
+
+      <button type="submit" class="btn" data-testid="test-contact-submit">Submit</button>
+      <p class="success" data-testid="test-contact-success" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMsg = document.querySelector('[data-testid="test-contact-success"]');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const subject = document.getElementById('subject');
+      const message = document.getElementById('message');
+
+      const nameErr = document.getElementById('error-name');
+      const emailErr = document.getElementById('error-email');
+      const subjectErr = document.getElementById('error-subject');
+      const msgErr = document.getElementById('error-message');
+
+      // to reset messages
+      [nameErr, emailErr, subjectErr, msgErr].forEach(el => el.textContent = '');
+      successMsg.textContent = '';
+
+      // for validation
+      if (name.value.trim() === '') {
+        nameErr.textContent = 'Full name is required.';
+        valid = false;
+      }
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email.value)) {
+        emailErr.textContent = 'Please enter a valid email address.';
+        valid = false;
+      }
+
+      if (subject.value.trim() === '') {
+        subjectErr.textContent = 'Subject is required.';
+        valid = false;
+      }
+
+      if (message.value.trim().length < 10) {
+        msgErr.textContent = 'Message must be at least 10 characters.';
+        valid = false;
+      }
+
+      // Success message
+      if (valid) {
+        successMsg.textContent = '✅ Thank you! Your message has been submitted successfully.';
+        form.reset();
+      }
+    });
+  </script>
+  </section>
+</body>
+</html>
